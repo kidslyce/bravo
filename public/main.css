@@ -20,7 +20,14 @@ body {
     font-family: komu-a, sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 40px;
+    font-size: 80px;
+    color:  #FFFFF0;
+    text-shadow: 10px black;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .blog-container{
@@ -30,12 +37,20 @@ body {
 
 
 header{
-    background-image: url("https://wallpaperaccess.com/full/2032540.jpg");
-     
+    background-image: url("https://3.bp.blogspot.com/-Bbr82iSTNuE/UAAhpn57JoI/AAAAAAAABTk/seby6YxCnHU/s1600/BlackandWhiteSydneySkyline-long+goodbye.png");
+   min-height: 500px;
+/* background-color: #414042; */
+    /* Position and center the image to scale nicely on all screens */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
 }
 
 .form-container{
     font-family: bio-sans, sans-serif;
     font-weight: 700;
     font-style: italic;
+    max-width: 400px;
+    color: #414042;
 }
