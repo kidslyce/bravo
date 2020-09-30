@@ -128,6 +128,7 @@ class App extends React.Component {
                                             id="date"
                                             onChange={this.handleChange}
                                             defaultValue={blog.date}
+                                            className="form-control"
                                         />
                                         <br />
                                         <label htmlFor="title">Title</label>
@@ -137,6 +138,7 @@ class App extends React.Component {
                                             id="title"
                                             onChange={this.handleChange}
                                             defaultValue={blog.title}
+                                            className="form-control"
                                         />
                                         <br />
                                         <label htmlFor="entry">Entry</label>
@@ -146,6 +148,7 @@ class App extends React.Component {
                                             id="entry"
                                             onChange={this.handleChange}
                                             defaultValue={blog.entry}
+                                            className="form-control"
                                         />
                                         <label htmlFor="url">URL</label>
                                         <br />
@@ -153,8 +156,10 @@ class App extends React.Component {
                                             type="text"
                                             id="url"
                                             onChange={this.handleChange}
-                                            defaultValue={blog.url} />
-                                        <input type="submit" value="Update blog" className="btn btn-outline-dark" />
+                                            defaultValue={blog.url}
+                                            className="form-control" />
+                                        <input type="submit" value="Update blog" className="btn btn-outline-dark"
+                                            className="form-control" />
                                     </form>
                                 </details>
                             </li>
