@@ -6,32 +6,26 @@ const router = express.Router()
 //=================================================
 // ROUTES
 //=================================================
-
 //=================================================
-// DELETE
+// INDEX
 //=================================================
-
-router.delete('/:id', (req, res) => {
-    Blog.findByIdAndRemove(req.params.id, (err, data) => {
-        if (err) {
-            console.error(err);
-        } else {
-            res.redirect('/blogs')
-        }
+router.get('/', (req, res) => {
+    Blog.find({}, (err, foundBlog) => {
+        res.json(foundBlog)
     })
 })
 
-//=================================================
-// EDIT
-//=================================================
 
-router.get('/:id/edit', (req, res) => {
-    Blog.findById(req.params.id, (error, foundBlog) => {
-        res.render('/', {
-            blog: foundBlog
+/* ===========
+POST ROUTE
+============= */
+//CREATE
+router.post('/', (req, res) => {
+    Blog.create(req.body, (err, createdBlog) => {
+        Blog.find({}, (err, foundBlog) => {
+            res.json(foundBlog)
         })
     })
-
 })
 
 //=================================================
@@ -42,91 +36,26 @@ router.put('/:id', (req, res) => {
     Blog.findByIdAndUpdate(req.params.id, req.body, {
                 new: true
             },
-            (err, updateModel) => {
-                res.redirect('/')
-            })
-        // res.send(req.body)
-})
+            (err, updatedBlog) => {
+                if(err) {
+                    res.send(err)
+                }else {
+                    Blog.find({}, (err, foundBlog) => {
+                        res.json(foundBlog)
+                    })
+                }
+        })
+    })          
 
 //=================================================
-// NEW
+// DELETE
 //=================================================
 
-router.get('/new', (req, res) => {
-    res.render('/')
-})
-
-//=================================================
-// CREATE
-//=================================================
-
-router.post('/', (req, res) => {
-    Blog.create(req.body, (error, createBlog) => {
-        res.redirect('/')
+router.delete('/:id', (req, res) => {
+    Blog.findByIdAndRemove(req.params.id, (err, deletedBlog) => {
+        Blog.find({}, (err, foundBlog) => {
+            res.json(foundBlog)
+        })
     })
 })
-
-
-//=================================================
-// UPDATE
-//=================================================
-
-router.put('/:id', (req, res) => {
-    routuer.findByIdAndUpdate(
-        req.params.id,
-        req.body, { new: true },
-        (error, updatedModel) => {
-            res.redirect('/')
-        }
-    )
-})
-
-
-//=================================================
-// SEED
-//=================================================
-
-router.get('/seed', (req, res) => {
-    Blog.create(
-        
-        (err, data) => {
-            res.send(data);
-        }
-    )
-});
-
-//=================================================
-// SHOW
-//=================================================
-
-router.get('/:id', (req, res) => {
-    Blog.findById(req.params.id, (error, foundBlog) => {
-        res.render(
-            '/', {
-                blog: foundBlog
-            }
-        );
-    })
-});
-
-//=================================================
-// INDEX
-//=================================================
-router.get('/', (req, res) => {
-    Blog.find({}, (error, allBlogs) => {
-        res.render(
-            '/', {
-                
-                blog: allBlogs,
-                
-            }
-        );
-    })
-});
-
-
-//=================================================
-// EXPORT
-//=================================================
-
 module.exports = router;
