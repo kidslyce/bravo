@@ -69,7 +69,7 @@ class App extends React.Component {
     }
 
 
-    handleSubmit = (event) => {
+    submitForm = (event) => {
         event.preventDefault();
         event.currentTarget.reset();
         console.log(this.state);
@@ -92,7 +92,7 @@ class App extends React.Component {
                     <label htmlFor="name">Date</label>
                     <input type="text" id="name" onChange={this.handleChange} className="form-control" />
                     <br />
-                    <label htmlFor="species">Tittle</label>
+                    <label htmlFor="species">Title</label>
                     <input type="text" id="species" onChange={this.handleChange} className="form-control" />
                     <br />
                     <label htmlFor="entry">Entry</label>
