@@ -1,6 +1,6 @@
 const express = require('express')
 const Blog = require('../models/blogs.js')
-const router = express.Router()
+const blogs = express.Router()
 
 // =======================================
 //              ROUTES
@@ -10,9 +10,9 @@ const router = express.Router()
 GET ROUTE
 ============= */
 //INDEX
-router.get('/', (req, res) => {
-    Blog.find({}, (err, foundBlog) => {
-        res.json(foundBlog)
+blogs.get('/', (req, res) => {
+    Blog.find({}, (err, foundBlogs) => {
+        res.json(foundBlogs)
     })
 })
 
@@ -20,28 +20,31 @@ router.get('/', (req, res) => {
 POST ROUTE
 ============= */
 //CREATE
-router.post('/', (req, res) => {
-    Blog.create(req.body, (err, createdBlog) => {
-        Blog.find({}, (err, foundBlog) => {
-            res.json(foundBlog)
+blogs.post('/', (req, res) => {
+    Blog.create(req.body, (err, createdBlogs) => {
+        Blog.find({}, (err, foundBlogs) => {
+            res.json(foundBlogs)
         })
     })
 })
 
 //=================================================
-// PUT
+// UPDATE
 //=================================================
 
-router.put('/:id', (req, res) => {
-    Blog.findByIdAndUpdate(req.params.id, req.body, {
-                new: true
-            },
+blogs.put('/:id', (req, res) => {
+    console.log(req.params.id);
+    console.log(req.body);
+    Blog.findByIdAndUpdate(
+        req.params.id, 
+        req.body, 
+        { new: true },
             (err, updatedBlog) => {
                 if(err) {
                     res.send(err)
                 }else {
-                    Blog.find({}, (err, foundBlog) => {
-                        res.json(foundBlog)
+                    Blog.find({}, (err, foundBlogs) => {
+                        res.json(foundBlogs)
                     })
                 }
         })
@@ -51,11 +54,11 @@ router.put('/:id', (req, res) => {
 // DELETE
 //=================================================
 
-router.delete('/:id', (req, res) => {
+blogs.delete('/:id', (req, res) => {
     Blog.findByIdAndRemove(req.params.id, (err, deletedBlog) => {
         Blog.find({}, (err, foundBlog) => {
-            res.json(foundBlog)
+            res.json(foundBlogs)
         })
     })
 })
-module.exports = router;
+module.exports = blogs
