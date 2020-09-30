@@ -7,8 +7,16 @@ body {
     
 }
 
-.home-nav {
+/* .home-nav {
     background-color: #ec3f52;
+    font-family: komu-a, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 40px;
+    padding-left: 10px;
+} */
+nav  {
+    
     font-family: komu-a, sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -67,4 +75,23 @@ header{
     width: 50%;
     
     padding: 10px;
+}
+
+li {
+    padding: 10%;
+    margin-bottom: 30px;
+    list-style: none;
+}
+
+
+
+.update-blog {
+margin: 5% 0;
+
+}
+
+.update-blog:hover {
+    background-color: #414042;
+    color: #FFFFF0;
+
 }

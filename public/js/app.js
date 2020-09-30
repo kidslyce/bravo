@@ -4,7 +4,7 @@ console.log("Team Bravo - REACT Part");
 class Nav extends React.Component {
 
     render = () => {
-        return <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+        return <nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand home-nav" href="#">HOME</a>
         </nav>
     }
@@ -107,8 +107,13 @@ class App extends React.Component {
                 <ul>
                     {this.state.blogs.map((blog) => {
                         return (
+<<<<<<< HEAD
                             <li key={blog._id}>
                                 <h6>Date: {blog.date}</h6>
+=======
+                            <li className="card" key={blog._id}>
+                                <h4>Date: {blog.date}</h4>
+>>>>>>> d69485f95ba3631069b05ad231af03f5f005c635
                                 <br />
                                 <h3>Title: {blog.title}</h3> <br />
                                 <p className="entry">{blog.entry}</p>
@@ -158,7 +163,7 @@ class App extends React.Component {
                                             defaultValue={blog.url}
                                             className="form-control" />
                                         <input type="submit" value="Update blog" className="btn btn-outline-dark"
-                                            className="form-control" />
+                                            className="form-control update-blog" />
                                     </form>
                                 </details>
                             </li>
