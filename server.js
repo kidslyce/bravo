@@ -22,7 +22,7 @@ app.use(express.static('public'))
 //      ROUTE TO CONTROLLER
 // =======================================
 //REPLACE 'basiccrud' WITH YOUR DATABASE
-const blogController = require('./controllers/blogs_controller.js')
+const blogController = require('./controllers/blogs.js')
 app.use('/blogs', blogController)
 // =======================================
 //              DATABASE
