@@ -88,11 +88,11 @@ class App extends React.Component {
             <Header />
             <div className="form-container">
                 <form onSubmit={this.submitForm}>
-                    <label htmlFor="name">Date</label>
-                    <input type="date" id="name" onChange={this.handleChange} className="form-control" />
+                    <label htmlFor="date">Date</label>
+                    <input type="date" id="date" onChange={this.handleChange} className="form-control" />
                     <br />
-                    <label htmlFor="species">Title</label>
-                    <input type="text" id="species" onChange={this.handleChange} className="form-control" />
+                    <label htmlFor="title">Title</label>
+                    <input type="text" id="title" onChange={this.handleChange} className="form-control" />
                     <br />
                     <label htmlFor="entry">Entry</label>
                     <input type="text" id="entry" onChange={this.handleChange} className="form-control" />
@@ -107,10 +107,11 @@ class App extends React.Component {
                 <ul>
                     {this.state.blogs.map((blog) => {
                         return (
+
                             <li className="card" key={blog._id}>
                                 <h6>Date: {blog.date}</h6>
                                 <br />
-                                <h2>Title: {blog.title}</h2> <br />
+                                <h3>Title: {blog.title}</h3> <br />
                                 <p className="entry">{blog.entry}</p>
                                 <a href={blog.url}>Link for more...</a>
                                 <button
