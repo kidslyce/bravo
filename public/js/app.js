@@ -101,7 +101,7 @@ class App extends React.Component {
                     <label htmlFor="url">URL</label>
                     <input type="text" id="url" onChange={this.handleChange} className="form-control" />
                     <br />
-                    <input type="submit" value="Add" />
+                    <input type="submit" value="Add" className="btn btn-outline-dark" />
                 </form>
             </div>
             <div className="all-blogs-container">
@@ -116,7 +116,8 @@ class App extends React.Component {
                                 <a href={blog.url}>Link for more...</a>
                                 <button
                                     value={blog._id}
-                                    onClick={this.deleteBlog}>Delete</button>
+                                    onClick={this.deleteBlog}
+                                    className="btn btn-outline-dark">Delete</button>
                                 <details>
                                     <summary>Edit this blog</summary>
                                     <form id={blog._id} onSubmit={this.updateblog}>
@@ -146,14 +147,14 @@ class App extends React.Component {
                                             onChange={this.handleChange}
                                             defaultValue={blog.entry}
                                         />
-                                        <laber htmlFor="url">URL</laber>
+                                        <label htmlFor="url">URL</label>
                                         <br />
                                         <input
                                             type="text"
                                             id="url"
                                             onChange={this.handleChange}
                                             defaultValue={blog.url} />
-                                        <input type="submit" value="Update blog" />
+                                        <input type="submit" value="Update blog" className="btn btn-outline-dark" />
                                     </form>
                                 </details>
                             </li>
