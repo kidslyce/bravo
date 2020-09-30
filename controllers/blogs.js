@@ -21,7 +21,7 @@ POST ROUTE
 ============= */
 //CREATE
 blogs.post('/', (req, res) => {
-    Blog.create(req.body, (err, createdBlogs) => {
+    Blog.create(req.body, (err, createdBlog) => {
         Blog.find({}, (err, foundBlogs) => {
             res.json(foundBlogs)
         })
@@ -33,8 +33,8 @@ blogs.post('/', (req, res) => {
 //=================================================
 
 blogs.put('/:id', (req, res) => {
-    console.log(req.params.id);
-    console.log(req.body);
+    //console.log(req.params.id);
+    //console.log(req.body);
     Blog.findByIdAndUpdate(
         req.params.id, 
         req.body, 
@@ -56,9 +56,10 @@ blogs.put('/:id', (req, res) => {
 
 blogs.delete('/:id', (req, res) => {
     Blog.findByIdAndRemove(req.params.id, (err, deletedBlog) => {
-        Blog.find({}, (err, foundBlog) => {
+        Blog.find({}, (err, foundBlogs) => {
             res.json(foundBlogs)
         })
     })
 })
+
 module.exports = blogs
