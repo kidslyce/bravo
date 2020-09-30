@@ -54,4 +54,8 @@ header{
     max-width: 400px;
     color: #414042;
     align-items: center;
+    margin: auto;
+    width: 50%;
+    
+    padding: 10px;
 }
