@@ -142,17 +142,17 @@ class App extends React.Component {
                                         <br />
                                         <input
                                             type="text"
-                                            id="species"
+                                            id="entry"
                                             onChange={this.handleChange}
-                                            defaultValue={blog.species}
+                                            defaultValue={blog.entry}
                                         />
-                                        {
-                                            blog.reservedForAdoption ?
-                                                <h4>Reserved for adoption</h4> :
-                                                <button
-                                                    onClick={this.reserveIt}
-                                                >Reserve</button>
-                                        }
+                                        <laber htmlFor="url">URL</laber>
+                                        <br />
+                                        <input
+                                            type="text"
+                                            id="url"
+                                            onChange={this.handleChange}
+                                            defaultValue={blog.url} />
                                         <input type="submit" value="Update blog" />
                                     </form>
                                 </details>
