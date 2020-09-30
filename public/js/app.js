@@ -4,8 +4,8 @@ console.log("Team Bravo - REACT Part");
 class Nav extends React.Component {
 
     render = () => {
-        return <nav>
-            <div className="home-nav">Home</div>
+        return <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand home-nav" href="#">HOME</a>
         </nav>
     }
 }
@@ -89,7 +89,7 @@ class App extends React.Component {
             <div className="form-container">
                 <form onSubmit={this.submitForm}>
                     <label htmlFor="name">Date</label>
-                    <input type="text" id="name" onChange={this.handleChange} className="form-control" />
+                    <input type="date" id="name" onChange={this.handleChange} className="form-control" />
                     <br />
                     <label htmlFor="species">Title</label>
                     <input type="text" id="species" onChange={this.handleChange} className="form-control" />
@@ -123,7 +123,7 @@ class App extends React.Component {
                                         <label htmlFor="date">Date</label>
                                         <br />
                                         <input
-                                            type="text"
+                                            type="date"
                                             id="date"
                                             onChange={this.handleChange}
                                             defaultValue={blog.date}
