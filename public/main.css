@@ -4,23 +4,38 @@
 
 body {
     background-color: #FFFFF0;
-    font-family: bio-sans, sans-serif;
-    font-weight: 400;
-    font-style: normal;
+    
 }
 
 .home-nav {
     background-color: #ec3f52;
+    font-family: komu-a, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 40px;
+    padding-left: 10px;
 }
 
 .blog-title{
     font-family: komu-a, sans-serif;
     font-weight: 400;
     font-style: normal;
+    font-size: 40px;
+}
+
+.blog-container{
+   
+    
+}
+
+
+header{
+    background-image: url("https://wallpaperaccess.com/full/2032540.jpg");
+     
 }
 
 .form-container{
     font-family: bio-sans, sans-serif;
-    font-weight: 400;
-    font-style: normal;
+    font-weight: 700;
+    font-style: italic;
 }
