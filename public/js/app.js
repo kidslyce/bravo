@@ -28,6 +28,38 @@ class App extends React.Component {
         url: "",
         blogs: [],
     }
+    componentDidMount = () => {
+        axios.get("/blogs").then(
+            (response) => {
+                this.setState({
+                    blogs: response.data,
+                })
+            }
+        )
+    }
+
+    updateblog = (event) => {
+        event.preventDefault();
+        const id = event.target.id;
+
+        axios.put("/blogs/" + id, this.state).then(
+            (response) => {
+                this.setState({
+                    blogs: response.data,
+                })
+            }
+        )
+    }
+
+    deleteBlog = (event) => {
+        axios.delete("/blogs/" + event.target.value).then(
+            (response) => {
+                this.setState({
+                    blogs: response.data,
+                })
+            }
+        )
+    }
 
     handleChange = event => {
         // event.preventDefault();
@@ -35,6 +67,8 @@ class App extends React.Component {
             [event.target.id]: event.target.value
         })
     }
+
+
     handleSubmit = (event) => {
         event.preventDefault();
         event.currentTarget.reset();
@@ -56,16 +90,16 @@ class App extends React.Component {
             <div className="form-container">
                 <form onSubmit={this.submitForm}>
                     <label htmlFor="name">Date</label>
-                    <input type="text" id="name" onChange={this.handleChange} />
+                    <input type="text" id="name" onChange={this.handleChange} className="form-control" />
                     <br />
                     <label htmlFor="species">Tittle</label>
-                    <input type="text" id="species" onChange={this.handleChange} />
+                    <input type="text" id="species" onChange={this.handleChange} className="form-control" />
                     <br />
                     <label htmlFor="entry">Entry</label>
-                    <input type="text" id="entry" onChange={this.handleChange} />
+                    <input type="text" id="entry" onChange={this.handleChange} className="form-control" />
                     <br />
                     <label htmlFor="url">URL</label>
-                    <input type="text" id="url" onChange={this.handleChange} />
+                    <input type="text" id="url" onChange={this.handleChange} className="form-control" />
                     <br />
                     <input type="submit" value="Add" />
                 </form>
@@ -82,31 +116,29 @@ class App extends React.Component {
                                 <a href={blog.url}>Link for more...</a>
                                 <button
                                     value={blog._id}
-                                    onClick={this.deleteblog}>Delete</button>
-                                {/* <details>
+                                    onClick={this.deleteBlog}>Delete</button>
+                                <details>
                                     <summary>Edit this blog</summary>
                                     <form id={blog._id} onSubmit={this.updateblog}>
-                                        <label htmlFor="name">Name</label>
+                                        <label htmlFor="date">Date</label>
                                         <br />
                                         <input
                                             type="text"
-                                            id="name"
+                                            id="date"
                                             onChange={this.handleChange}
-                                            defaultValue={blog.name}
-                                        // placeholder={blog.name}
+                                            defaultValue={blog.date}
                                         />
                                         <br />
-                                        <label htmlFor="image">Image</label>
+                                        <label htmlFor="title">Title</label>
                                         <br />
                                         <input
                                             type="text"
-                                            id="image"
+                                            id="title"
                                             onChange={this.handleChange}
-                                            defaultValue={blog.image}
-                                        // placeholder={blog.image}
+                                            defaultValue={blog.title}
                                         />
                                         <br />
-                                        <label htmlFor="species">Species</label>
+                                        <label htmlFor="entry">Entry</label>
                                         <br />
                                         <input
                                             type="text"
@@ -123,7 +155,7 @@ class App extends React.Component {
                                         }
                                         <input type="submit" value="Update blog" />
                                     </form>
-                                </details> */}
+                                </details>
                             </li>
                         )
                     })}
