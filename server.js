@@ -62,6 +62,7 @@ DELETE ROUTE
 
 app.get('/' , (req, res)=> {
     res.send('hai')
+    console.log('hellllllo');
 })
 
 // =======================================
