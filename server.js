@@ -2,74 +2,57 @@
 //              DEPENDENCIES
 // =======================================
 const express = require('express');
-// const mongoose = require('mongoose');
-// const methodOverride = require('method-override');
+const mongoose = require('mongoose');
+// =======================================
+//              CONFIGURATIONS
+// =======================================
 const app = express();
-const port = 3000;
-// app.use(express.static('public'));
-// app.use(express.json());
-// app.use(express.urlencoded({extended: true}));  
-// app.use(methodOverride('_method'));
+require('dotenv').config()
+const PORT = process.env.PORT
+
+
+// =======================================
+//              MIDDLEWARE
+// =======================================
+app.use(express.json())
+app.use(express.static('public'))
+
+// =======================================
+//      ROUTE TO CONTROLLER
+// =======================================
+//REPLACE 'basiccrud' WITH YOUR DATABASE
+const blogController = require('./controllers/blogs_controller.js')
+app.use('/animalshelter', blogController)
 // =======================================
 //              DATABASE
 // =======================================
-// const dataBaseVar = 'your_data_base_as_a_string'
-// const mongoURI = 'mongodb://localhost:27017/'+ dataBaseVar;
-// const db = mongoose.connection;
-// =======================================
-//      MONGOOSE CONNECTION LOGIC
-// =======================================
-// mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify : false }, () => {
-//     console.log('the connection with mongod is established')
-// })
-// db.once('open', ()=> {
-//   console.log('mongo connected: ', mongoURI);
-// });
-// db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
-// db.on('disconnected', () => console.log('mongo disconnected'));
-// =======================================
-//              ROUTES
-// =======================================
-/* ===========
-GET ROUTE
-============= */
-//NEW
-/* ===========
-POST ROUTE
-============= */
-//CREATE
-/* ===========
-GET ROUTE
-============= */
-//SHOW
-/* ===========
-GET ROUTE
-============= */
-//INDEX
-/* ===========
-PUT ROUTE
-============= */
-//UPDATE
-/* ===========
-GET ROUTE
-============= */
-//EDIT
-/* ===========
-DELETE ROUTE
-============= */
-//DELETE
-
-
-app.get('/' , (req, res)=> {
-    res.send('hai')
-    console.log('hellllllo');
+const MONGODB_URI = process.env.MONGODB_URI
+mongoose.connect(MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false
 })
+// =======================================
+//              ERROR/SUCCESS
+// =======================================
+mongoose.connection.on('error', err =>
+    console.log(
+        err.message,
+        ' is Mongod not running?/Problem with Atlas Connection?'
+    )
+)
+
+mongoose.connection.on('connected', () =>
+    console.log('mongo connected: ', MONGODB_URI)
+)
+
+mongoose.connection.on('disconnected', () => console.log('mongo disconnected'))
 
 // =======================================
 //              LISTENER
 // =======================================
-app.listen(port, () => {
-  console.log(`listening on port: ${port}`)
+app.listen(PORT, () => {
+    console.log('listening on port: ' + PORT)
 });
 
 
