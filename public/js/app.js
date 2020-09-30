@@ -108,7 +108,7 @@ class App extends React.Component {
                     {this.state.blogs.map((blog) => {
                         return (
                             <li className="card" key={blog._id}>
-                                <h4>Date: {blog.date}</h4>
+                                <h6>Date: {blog.date}</h6>
                                 <br />
                                 <h2>Title: {blog.title}</h2> <br />
                                 <p className="entry">{blog.entry}</p>
