@@ -1,3 +1,4 @@
+
 // =======================================
 //              DEPENDENCIES
 // =======================================
@@ -22,7 +23,7 @@ app.use(express.static('public'))
 // =======================================
 //REPLACE 'basiccrud' WITH YOUR DATABASE
 const blogController = require('./controllers/blogs_controller.js')
-app.use('/animalshelter', blogController)
+app.use('/blogs', blogController)
 // =======================================
 //              DATABASE
 // =======================================
@@ -54,5 +55,4 @@ mongoose.connection.on('disconnected', () => console.log('mongo disconnected'))
 app.listen(PORT, () => {
     console.log('listening on port: ' + PORT)
 });
-
 
