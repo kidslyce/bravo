@@ -1,41 +1,58 @@
-const express = require('express')
-const mongoose = require('mongoose')
 
-// CONFIGURATION
-const app = express()
+// =======================================
+//              DEPENDENCIES
+// =======================================
+const express = require('express');
+const mongoose = require('mongoose');
+// =======================================
+//              CONFIGURATIONS
+// =======================================
+const app = express();
 require('dotenv').config()
 const PORT = process.env.PORT
 
+
+// =======================================
+//              MIDDLEWARE
+// =======================================
+app.use(express.json())
+app.use(express.static('public'))
+
+// =======================================
+//      ROUTE TO CONTROLLER
+// =======================================
+//REPLACE 'basiccrud' WITH YOUR DATABASE
+const blogController = require('./controllers/blogs_controller.js')
+app.use('/blogs', blogController)
+// =======================================
+//              DATABASE
+// =======================================
 const MONGODB_URI = process.env.MONGODB_URI
 mongoose.connect(MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false
 })
-
-// Error / success
+// =======================================
+//              ERROR/SUCCESS
+// =======================================
 mongoose.connection.on('error', err =>
-  console.log(
-    err.message,
-    ' is Mongod not running?/Problem with Atlas Connection?'
-  )
+    console.log(
+        err.message,
+        ' is Mongod not running?/Problem with Atlas Connection?'
+    )
 )
+
 mongoose.connection.on('connected', () =>
-  console.log('mongo connected: ', MONGODB_URI)
+    console.log('mongo connected: ', MONGODB_URI)
 )
+
 mongoose.connection.on('disconnected', () => console.log('mongo disconnected'))
 
-// middleware
-app.use(express.json()) //use .json(), not .urlencoded()
-app.use(express.static('public'))
-// Routes
-const blogsController = require('./controllers/blogs.js')
-app.use('/blogs', blogsController)
-
-
-// LISTENER
+// =======================================
+//              LISTENER
+// =======================================
 app.listen(PORT, () => {
-  console.log('listening on port', PORT)
-})
-
+    console.log('listening on port: ' + PORT)
+});
 
