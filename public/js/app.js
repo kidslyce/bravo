@@ -14,8 +14,7 @@ class Header extends React.Component {
 
     render = () => {
         return <header>
-            <div className="bloc-pic">Blog Picture Here</div>
-            <div className="blog-title"> Here we have title</div>
+            <div className="blog-title">Team Bravo Blog!</div>
         </header>
     }
 }
@@ -109,9 +108,9 @@ class App extends React.Component {
                     {this.state.blogs.map((blog) => {
                         return (
                             <li key={blog._id}>
-                                <h4>{blog.date}</h4>
+                                <h4>Date: {blog.date}</h4>
                                 <br />
-                                <h2>({blog.title})</h2> <br />
+                                <h2>Title: {blog.title}</h2> <br />
                                 <p className="entry">{blog.entry}</p>
                                 <a href={blog.url}>Link for more...</a>
                                 <button
