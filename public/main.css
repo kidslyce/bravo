@@ -1,0 +1,26 @@
+
+
+
+
+body {
+    background-color: #FFFFF0;
+    font-family: bio-sans, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.home-nav {
+    background-color: #ec3f52;
+}
+
+.blog-title{
+    font-family: komu-a, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.form-container{
+    font-family: bio-sans, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
